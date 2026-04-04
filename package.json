@@ -1,0 +1,30 @@
+{
+  "name": "picture-it",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "picture-it": "./index.ts"
+  },
+  "scripts": {
+    "start": "bun run index.ts",
+    "download-fonts": "bun run scripts/download-fonts.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^25.5.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.92",
+    "@anthropic-ai/sdk": "^0.82.0",
+    "@fal-ai/client": "^1.9.5",
+    "@resvg/resvg-js": "^2.6.2",
+    "commander": "^14.0.3",
+    "dotenv": "^17.4.0",
+    "satori": "^0.26.0",
+    "sharp": "^0.34.5"
+  }
+}
