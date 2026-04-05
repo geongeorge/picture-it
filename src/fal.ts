@@ -98,8 +98,7 @@ export async function edit(opts: {
       num_images: 1,
       max_images: 1,
     };
-  } else {
-    // banana2 / banana-pro
+  } else if (model === "banana2") {
     input = {
       prompt: opts.prompt,
       image_urls: opts.inputUrls,
@@ -108,6 +107,13 @@ export async function edit(opts: {
       output_format: "png",
       num_images: 1,
       limit_generations: true,
+    };
+  } else {
+    // banana-pro — minimal params, let it auto-detect
+    input = {
+      prompt: opts.prompt,
+      image_urls: opts.inputUrls,
+      num_images: 1,
     };
   }
 
