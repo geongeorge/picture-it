@@ -8,11 +8,11 @@ Each command takes an image in, does one thing, and outputs an image. Chain them
 
 ## Samples
 
-| | |
-|:---:|:---:|
-| ![Magazine Cover](samples/magazine-cover.png) | ![Movie Poster](samples/movie-poster.png) |
-| **Magazine Cover** | **Sci-Fi Movie Poster** |
-| `generate` → `compose` → `vignette` | `generate` → `compose` → `grade` → `vignette` |
+| | | |
+|:---:|:---:|:---:|
+| ![Magazine Cover](samples/magazine-cover.png) | ![Movie Poster](samples/movie-poster.png) | ![YouTube Thumbnail](samples/youtube-thumbnail.png) |
+| **Magazine Cover** | **Sci-Fi Movie Poster** | **YouTube Thumbnail** |
+| `generate` → `compose` → `vignette` | `generate` → `edit` → `compose` → `grade` | `generate` → `edit` → `crop` |
 
 ## Install
 
