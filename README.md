@@ -8,11 +8,14 @@ Each command takes an image in, does one thing, and outputs an image. Chain them
 
 ## Samples
 
-| | | | |
-|:---:|:---:|:---:|:---:|
-| ![Magazine Cover](samples/magazine-cover.png) | ![Movie Poster](samples/movie-poster.png) | ![YouTube Thumbnail](samples/youtube-thumbnail.png) | ![iPhone Comparison](samples/iphone-comparison.png) |
-| **Magazine Cover** | **Sci-Fi Movie Poster** | **YouTube Thumbnail** | **Product Comparison** |
-| `generate` → `compose` → `vignette` | `generate` → `edit` → `compose` → `grade` | `generate` → `edit` → `crop` | `generate` bg → `remove-bg` × 2 → `compose` |
+| | |
+|:---:|:---:|
+| ![YouTube Thumbnail](samples/youtube-thumbnail.png) | ![iPhone Comparison](samples/iphone-comparison.png) |
+| **YouTube Thumbnail** — `generate` → `edit` → `crop` | **Product Comparison** — `generate` bg → `remove-bg` × 2 → `compose` |
+| Text behind subject, readable at any size. FAL renders the text as part of the scene so it interacts with depth. | Uses original Apple product images. AI edit models alter product details, so `remove-bg` from a trusted source image and compositing is the reliable path for product blogs. |
+| ![Magazine Cover](samples/magazine-cover.png) | ![Movie Poster](samples/movie-poster.png) |
+| **Magazine Cover** — `generate` → `compose` → `vignette` | **Sci-Fi Movie Poster** — `generate` → `edit` → `compose` → `grade` |
+| AI-generated portrait with Satori-rendered masthead, headlines, and credits layered on top. Pixel-perfect typography over AI art. | Multi-pass: Flux generates the scene, SeedDream adds volumetric fog, Satori renders the title and credits. Cinematic grade finishes it. |
 
 ## Install
 
