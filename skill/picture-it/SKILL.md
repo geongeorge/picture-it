@@ -103,9 +103,21 @@ Choose the right model for the job — don't overspend.
 - `pixelcut` — Alternative
 - `rembg` — Cheapest
 
-## How to Think About Composition
+## How to Write Good Prompts
 
-Read `references/composition-guide.md` for detailed techniques on creating professional compositions including text-behind-subject, multi-pass editing, and product photography workflows.
+This is the difference between mediocre and professional output. Read `references/prompt-library.md` for a full library of tested prompts you can copy and adapt. Key rules:
+
+**For generation:** Be specific about lighting ("dramatic side lighting from upper right"), camera ("shot on Canon R5 70-200mm f2.8"), and atmosphere ("dust particles visible in the light beam"). Vague prompts produce generic results.
+
+**For text-behind-subject:** The key phrase is: *"Add '[TEXT]' in large bold [color] letters BEHIND the [subject] — the [subject's] body overlaps and partially covers the letters."* Without "BEHIND" and the occlusion instruction, the text floats on top.
+
+**For edits:** Always end with *"Keep everything else exactly the same"* and list what to preserve. Without this, the AI changes things you didn't want changed.
+
+**For background replacement:** Use realistic, specific locations ("modern upscale mall entrance during daytime, natural warm daylight"). Over-dramatic backgrounds ("city at night with neon reflections") look obviously fake.
+
+## Composition Techniques
+
+Read `references/composition-guide.md` for detailed multi-pass workflows, product photography, magazine covers, and overlay composition.
 
 ## Common Workflows
 
