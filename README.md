@@ -6,7 +6,54 @@ Photoshop for AI agents. Composable image operations from the CLI.
 
 Each command takes an image in, does one thing, and outputs an image. Chain them together to build any visual.
 
+## Samples
+
+| | |
+|:---:|:---:|
+| ![Magazine Cover](samples/magazine-cover.png) | ![Movie Poster](samples/movie-poster.png) |
+| **Magazine Cover** | **Sci-Fi Movie Poster** |
+| `generate` → `compose` → `vignette` | `generate` → `compose` → `grade` → `vignette` |
+
+## Install
+
+Requires Bun 1.3+ on your `PATH`, even if you install the package with `npm` or `pnpm`.
+
+### Bun
+
+```bash
+bun install -g picture-it
+```
+
+### pnpm
+
+```bash
+pnpm add -g picture-it
+```
+
+### npm
+
+```bash
+npm install -g picture-it
+```
+
+One-off usage also works if Bun is installed:
+
+```bash
+bunx picture-it@latest info -i image.png
+pnpm dlx picture-it@latest info -i image.png
+npx picture-it@latest info -i image.png
+```
+
 ## Setup
+
+```bash
+picture-it download-fonts
+picture-it auth --fal <your-fal-key>
+```
+
+`download-fonts` is required for text and template commands.
+
+## Local development
 
 ```bash
 bun install
@@ -209,3 +256,12 @@ picture-it replace-bg -i product.jpg --prompt "clean white studio background wit
 - **Satori** + **resvg-js** — text rendering (JSX → SVG → PNG)
 - **@fal-ai/client** — AI image generation and editing
 - **Commander.js** — CLI framework
+
+## Publish to npm
+
+1. Update the version in `package.json` and `index.ts` together.
+2. Make sure you are logged in to npm.
+3. Run `bun publish --dry-run` and inspect the package contents.
+4. Publish with `bun publish --access public`.
+
+`picture-it` is currently available as an npm package name.

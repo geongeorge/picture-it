@@ -1,14 +1,47 @@
 {
   "name": "picture-it",
-  "module": "index.ts",
+  "version": "0.2.0",
+  "description": "Photoshop for AI agents. Composable image operations from the CLI.",
+  "module": "./index.ts",
   "type": "module",
-  "private": true,
   "bin": {
     "picture-it": "./index.ts"
   },
+  "files": [
+    "index.ts",
+    "src",
+    "scripts",
+    "README.md",
+    "hero.png"
+  ],
   "scripts": {
     "start": "bun run index.ts",
-    "download-fonts": "bun run scripts/download-fonts.ts"
+    "download-fonts": "bun run scripts/download-fonts.ts",
+    "publish:dry-run": "bun publish --dry-run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geongeorge/picture-it.git"
+  },
+  "homepage": "https://github.com/geongeorge/picture-it#readme",
+  "bugs": {
+    "url": "https://github.com/geongeorge/picture-it/issues"
+  },
+  "keywords": [
+    "ai",
+    "image",
+    "cli",
+    "graphics",
+    "open-graph",
+    "social-images",
+    "satori",
+    "fal"
+  ],
+  "engines": {
+    "bun": ">=1.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@types/bun": "latest",

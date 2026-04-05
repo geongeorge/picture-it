@@ -12,6 +12,7 @@ import { getTemplate } from "./src/templates/index.ts";
 import { checkAndFixContrast } from "./src/contrast.ts";
 import { PLATFORM_PRESETS } from "./src/presets.ts";
 import { setConfigValue, getConfigValue, listConfig, clearConfig, maskKey, getKeySource } from "./src/config.ts";
+import { downloadFonts, getFontDirectory } from "./src/fonts.ts";
 import type { ColorGrade, Overlay, PipelineStep, BatchEntry } from "./src/types.ts";
 
 const program = new Command();
@@ -423,6 +424,20 @@ program
     }, null, 2));
   });
 
+// ─── DOWNLOAD-FONTS ─────────────────────────────────────
+program
+  .command("download-fonts")
+  .description("Download fonts required for text and template commands")
+  .option("--force", "Redownload existing font files")
+  .action(async (opts) => {
+    const result = await downloadFonts({
+      force: opts.force,
+      onProgress: (message) => log(message),
+    });
+    log(`Fonts ready in ${result.dir}`);
+    log("Text, compose, and template commands can use them immediately.");
+  });
+
 // ─── AUTH ────────────────────────────────────────────────
 program
   .command("auth")
@@ -434,6 +449,7 @@ program
     if (opts.status) {
       const falInfo = getKeySource("fal_key");
       log(falInfo ? `FAL_KEY: ${maskKey(falInfo.value)} (${falInfo.source}) ✓` : "FAL_KEY: not configured");
+      log(`Fonts: ${getFontDirectory()}`);
       return;
     }
     if (opts.clear) { clearConfig(); log("Keys cleared."); return; }

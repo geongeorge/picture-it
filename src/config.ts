@@ -2,11 +2,11 @@ import fs from "fs";
 import path from "path";
 import type { PictureItConfig } from "./types.ts";
 
-const CONFIG_DIR = path.join(
+export const APP_DIR = path.join(
   process.env["HOME"] || process.env["USERPROFILE"] || "~",
   ".picture-it"
 );
-const CONFIG_PATH = path.join(CONFIG_DIR, "config.json");
+const CONFIG_PATH = path.join(APP_DIR, "config.json");
 
 function loadConfigFile(): PictureItConfig {
   try {
@@ -18,7 +18,7 @@ function loadConfigFile(): PictureItConfig {
 }
 
 function saveConfigFile(config: PictureItConfig): void {
-  fs.mkdirSync(CONFIG_DIR, { recursive: true });
+  fs.mkdirSync(APP_DIR, { recursive: true });
   fs.writeFileSync(CONFIG_PATH, JSON.stringify(config, null, 2), {
     mode: 0o600,
   });
