@@ -499,10 +499,11 @@ Key decisions: **Recraft V4** ($0.25) was chosen for the backdrop because it pro
 
 ### Total Cost for All Samples: ~$0.88
 
-| Sample            | Models Used                      | Cost   |
-| ----------------- | -------------------------------- | ------ |
-| Magazine Cover    | flux-dev + seedream + Satori     | $0.07  |
-| Movie Poster      | flux-dev + seedream × 2 + Satori | $0.11  |
-| YouTube Thumbnail | flux-dev + seedream              | $0.07  |
-| iPhone Comparison | flux-schnell + bria × 2 + Satori | ~$0.01 |
-| Hoka Mach 7       | flux-dev + seedream + Satori     | $0.07  |
+| Sample            | Models Used                         | Cost   |
+| ----------------- | ----------------------------------- | ------ |
+| Magazine Cover    | flux-dev + seedream + Satori        | $0.07  |
+| Movie Poster      | flux-dev + seedream × 2 + Satori    | $0.11  |
+| YouTube Thumbnail | flux-dev + seedream                 | $0.07  |
+| iPhone Comparison | flux-schnell + bria × 2 + Satori    | ~$0.01 |
+| Hoka Mach 7       | flux-dev + seedream + Satori        | $0.07  |
+| Casio Watch       | recraft-v4 + banana-pro × 2         | $0.55  |
