@@ -80,13 +80,14 @@ program
   .command("remove-bg")
   .description("Remove background from an image")
   .requiredOption("-i, --input <path>", "Input image")
+  .option("--model <name>", "Model: bria (default), birefnet, pixelcut, rembg")
   .option("-o, --output <path>", "Output file", "output.png")
   .option("--verbose", "Detailed output")
   .action(async (opts) => {
     const falKey = ensureFalKey();
     configureFal(falKey);
     const url = await uploadFile(path.resolve(opts.input));
-    const buf = await removeBg({ inputUrl: url, verbose: opts.verbose });
+    const buf = await removeBg({ inputUrl: url, model: opts.model, verbose: opts.verbose });
     const out = await writeOutput(buf, opts.output);
     console.log(out);
   });

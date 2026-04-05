@@ -134,18 +134,33 @@ export async function edit(opts: {
 
 // --- Remove background ---
 
+export type BgRemovalModel = "birefnet" | "bria" | "pixelcut" | "rembg";
+
+const BG_REMOVAL_ENDPOINTS: Record<BgRemovalModel, string> = {
+  birefnet: "fal-ai/birefnet",
+  bria: "fal-ai/bria/background/remove",
+  pixelcut: "fal-ai/pixelcut/background-removal",
+  rembg: "fal-ai/smoretalk-ai/rembg-enhance",
+};
+
 export async function removeBg(opts: {
   inputUrl: string;
+  model?: string;
   verbose?: boolean;
 }): Promise<Buffer> {
-  log("FAL: birefnet background removal");
+  const model = (opts.model || "bria") as BgRemovalModel;
+  const endpoint = BG_REMOVAL_ENDPOINTS[model] || BG_REMOVAL_ENDPOINTS.bria;
 
-  const result = await fal.subscribe("fal-ai/birefnet", {
+  log(`FAL: ${model} background removal`);
+
+  const result = await fal.subscribe(endpoint, {
     input: { image_url: opts.inputUrl },
   });
 
-  const outputUrl = (result as any).data?.image?.url;
-  if (!outputUrl) throw new Error("birefnet returned no image");
+  // Different models return the image in different fields
+  const data = (result as any).data;
+  const outputUrl = data?.image?.url || data?.images?.[0]?.url;
+  if (!outputUrl) throw new Error(`${model} returned no image`);
 
   const response = await fetch(outputUrl);
   return Buffer.from(await response.arrayBuffer());
