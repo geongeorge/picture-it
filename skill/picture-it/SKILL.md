@@ -5,13 +5,26 @@ compatibility: Requires Node.js 18+ and picture-it CLI (npm package). FAL_KEY en
 license: MIT
 metadata:
   author: geongeorge
-  version: "0.2.0"
+  version: "0.2.1"
   homepage: https://github.com/geongeorge/picture-it
   source: https://github.com/geongeorge/picture-it
   package: https://www.npmjs.com/package/picture-it
-  required-binaries: node, picture-it
-  required-env: FAL_KEY
-  data-transmission: User images are uploaded to fal.ai for AI processing. See https://fal.ai/privacy for retention policy.
+  openclaw:
+    primaryEnv: FAL_KEY
+    requires:
+      env:
+        - FAL_KEY
+      bins:
+        - node
+        - picture-it
+      config:
+        - ~/.picture-it/config.json
+    install:
+      - kind: npm
+        package: picture-it
+        bins:
+          - picture-it
+    data-transmission: User images are uploaded to fal.ai for AI processing. See https://fal.ai/privacy for retention policy.
 ---
 
 # picture-it
