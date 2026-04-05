@@ -1,23 +1,54 @@
 ---
 name: picture-it
 description: Generate and edit images from the CLI using picture-it. Use this skill whenever the user asks to create, edit, or manipulate images — blog headers, social cards, hero images, product comparisons, YouTube thumbnails, movie posters, magazine covers, Instagram edits, background removal, or any visual content. Also trigger when the user mentions picture-it by name, wants to composite images, apply color grading, add text to images, remove or replace backgrounds, crop/resize photos, or needs any kind of image generation or photo editing from the terminal. This skill covers multi-pass AI image editing workflows that chain composable operations together.
+compatibility: Requires bun (1.3+), picture-it CLI (npm package), and FAL_KEY environment variable for AI operations. Needs network access to fal.ai for image generation/editing.
+license: MIT
+metadata:
+  author: geongeorge
+  version: "0.2.0"
+  homepage: https://github.com/geongeorge/picture-it
+  source: https://github.com/geongeorge/picture-it
+  package: https://www.npmjs.com/package/picture-it
+  required-binaries: bun, picture-it
+  required-env: FAL_KEY
+  data-transmission: User images are uploaded to fal.ai for AI processing. See https://fal.ai/privacy for retention policy.
 ---
 
 # picture-it
 
 Photoshop for AI agents. Composable image operations from the CLI.
 
+Source: https://github.com/geongeorge/picture-it | npm: https://www.npmjs.com/package/picture-it
+
 ## Prerequisites
 
-picture-it must be installed and configured:
+picture-it must be installed and configured. Requires Bun 1.3+ on PATH.
 
 ```bash
+# Install (pick one)
 bun install -g picture-it
+pnpm add -g picture-it
+npm install -g picture-it
+
+# Setup
 picture-it download-fonts
+```
+
+### Credentials
+
+The FAL API key is required for AI operations (generate, edit, remove-bg, upscale). Set it via environment variable or the CLI:
+
+```bash
+# Option 1: Environment variable (preferred — use platform-managed secrets)
+export FAL_KEY=your-key-here
+
+# Option 2: CLI config (stored in ~/.picture-it/config.json with 0600 permissions)
 picture-it auth --fal <fal-api-key>
 ```
 
-If not installed, tell the user to install it first. Get a FAL key from https://fal.ai.
+NEVER paste API keys into chat. Always use environment variables or the CLI auth command. Get a FAL key from https://fal.ai.
+
+Note: User images are uploaded to fal.ai for AI processing when using generate, edit, remove-bg, or upscale commands. Local-only commands (crop, grade, grain, vignette, text, compose, template, info) do not transmit data.
 
 ## Core Concept
 
